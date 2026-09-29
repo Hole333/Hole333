@@ -1,4 +1,4 @@
-name: Refresh contribution snake
+name: Refresh profile panels and snake
 on:
   workflow_dispatch:
   schedule:
@@ -7,6 +7,8 @@ on:
     branches: [main]
     paths:
       - scripts/finalize_snake.py
+      - scripts/render_profile_panels.py
+      - profile.json
       - .github/workflows/contribution-snake.yml
 permissions:
   contents: read
@@ -26,6 +28,10 @@ jobs:
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
         with:
           python-version: '3.12'
+      - name: Render public profile panels
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python scripts/render_profile_panels.py --output _profile
       - name: Generate Hole333 contribution snake
         uses: Platane/snk/svg-only@d8f6715049803e982ee5ff501b6b9b7d5deeb09b
         with:
@@ -38,7 +44,9 @@ jobs:
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: contribution-snake
-          path: _generated/*.svg
+          path: |
+            _generated/*.svg
+            _profile/
           if-no-files-found: error
           retention-days: 1
   publish:
@@ -52,16 +60,18 @@ jobs:
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
           name: contribution-snake
-          path: _generated/
+          path: _download/
       - name: Commit contribution images only
         shell: bash
         run: |
           git pull --ff-only origin main
-          mkdir -p assets/contributions
-          cp _generated/*.svg assets/contributions/
+          mkdir -p assets/contributions assets/profile
+          cp _download/_generated/*.svg assets/contributions/
+          cp _download/_profile/* assets/profile/
+          git add assets/profile
           git add assets/contributions/snake-light.svg assets/contributions/snake-dark.svg assets/contributions/activity-static-light.svg assets/contributions/activity-static-dark.svg
           if git diff --cached --quiet; then exit 0; fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "chore: refresh contribution snake [skip ci]"
+          git commit -m "chore: refresh public profile panels and snake [skip ci]"
           git push origin HEAD:main

@@ -34,5 +34,9 @@
       "label": "个人博客",
       "description": "文章、笔记和项目记录"
     }
+  ],
+  "introLines": [
+    "Embedded Linux / MCU",
+    "FreeRTOS / Machine Vision"
   ]
 }

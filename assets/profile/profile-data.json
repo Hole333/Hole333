@@ -1,0 +1,32 @@
+{
+  "login": "Hole333",
+  "asOf": "2026-09-29T08:57:08+00:00",
+  "period": {
+    "from": "2025-09-29T08:57:08Z",
+    "to": "2026-09-29T08:57:08Z"
+  },
+  "stats": {
+    "stars": 11,
+    "commits": 76,
+    "pullRequests": 0,
+    "issues": 0,
+    "contributedRepositories": 4
+  },
+  "languageBytes": {
+    "C++": 2748350,
+    "Python": 16312,
+    "C": 896372,
+    "QML": 52332,
+    "CMake": 11085,
+    "QMake": 3204,
+    "Shell": 684,
+    "C#": 122384,
+    "Batchfile": 3045,
+    "PowerShell": 7406,
+    "Astro": 47646,
+    "JavaScript": 22833,
+    "TypeScript": 2621
+  },
+  "languageScope": "Non-fork public repositories, excluding the profile repository. GitHub Linguist code bytes.",
+  "visibility": "Public data only; private repositories are excluded."
+}
