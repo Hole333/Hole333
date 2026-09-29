@@ -33,15 +33,18 @@ def svg(name,width,height,body,style='',title='Halo Moon'):
     result+=body+'</svg>\n';(out/name).write_bytes(result.encode('utf-8'))
 gradient='<defs><linearGradient id="warm" x1="0" x2="1" y1="0" y2="0"><stop stop-color="#FF5F6D"/><stop offset=".55" stop-color="#FF9671"/><stop offset="1" stop-color="#FFC371"/></linearGradient></defs>'
 wave='<path class="wave" d="M-280 198'+('q70 -25 140 0t140 0'*6)+'v80H-280Z" fill="#fff" opacity=".2"/>'
-header=gradient+'<path d="M0 0H1120V207Q840 272 560 208T0 211Z" fill="url(#warm)"/>'+wave
-header+='<g class="headline">'+txt(560,112,profile['name'],76,'#542642','700','middle')+txt(560,159,'Embedded Linux / MCU / FreeRTOS / Machine Vision',22,'#542642','500','middle')+'</g>'
+surface='M0 0H1120V207Q840 272 560 208T0 211Z'
+header=gradient+'<defs><clipPath id="headerClip"><path d="'+surface+'"/></clipPath></defs><path d="'+surface+'" fill="url(#warm)"/><g clip-path="url(#headerClip)">'+wave+'</g>'
+header+='<g class="headline">'+txt(560,112,profile['name'],76,'#542642','700','middle')+txt(560,159,'halomoon.cn',22,'#542642','500','middle')+'</g>'
 motion='@keyframes drift{to{transform:translateX(-280px)}}@keyframes enter{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}.wave{animation:drift 12s linear infinite}.headline{animation:enter 200ms cubic-bezier(0.23,1,0.32,1) both}@media(prefers-reduced-motion:reduce){.wave,.headline{animation:none}}'
 svg('header-wave.svg',1120,250,header,motion)
 svg('header-static.svg',1120,250,header)
-footer=gradient+'<path d="M0 30Q280 92 560 38T1120 36V110H0Z" fill="url(#warm)"/>'+'<g transform="translate(0,-155)">'+wave+'</g>'
+surface='M0 30Q280 92 560 38T1120 36V110H0Z'
+footer=gradient+'<defs><clipPath id="footerClip"><path d="'+surface+'"/></clipPath></defs><path d="'+surface+'" fill="url(#warm)"/><g clip-path="url(#footerClip)"><g transform="translate(0,-155)">'+wave+'</g></g>'
 svg('footer-wave.svg',1120,110,footer,motion);svg('footer-static.svg',1120,110,footer)
 line='Embedded Linux  /  MCU  /  FreeRTOS  /  Machine Vision';n=len(line);length=n*13;start=(1000-length)/2
-typing='<g transform="translate('+str(start)+',0)"><g class="typed">'+txt(0,48,line,22,'#2483B7','600',family=mono)+'</g><rect class="caret" x="0" y="28" width="2" height="27" fill="#2483B7"/></g>'
+letters=txt(0,48,line,22,'#2483B7','600',family=mono).replace('<text ','<text textLength="'+str(length)+'" lengthAdjust="spacingAndGlyphs" ')
+typing='<g transform="translate('+str(start)+',0)"><g class="typed">'+letters+'</g><rect class="caret" x="0" y="28" width="2" height="27" fill="#2483B7"/></g>'
 typingcss='@keyframes type{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}@keyframes cursor{to{transform:translateX('+str(length)+'px)}}@keyframes blink{50%{opacity:0}}.typed{clip-path:inset(0 0 0 0);animation:type 3s steps('+str(n)+',end) both}.caret{animation:cursor 3s steps('+str(n)+',end) forwards,blink 800ms steps(2,end) infinite}@media(prefers-color-scheme:dark){text,.caret{fill:#72C9F1}}@media(prefers-reduced-motion:reduce){.typed{animation:none}.caret{display:none}}'
 svg('focus-typing.svg',1000,80,typing,typingcss,title=line)
 svg('focus-static.svg',1000,80,txt(500,48,line,22,'#2483B7','600','middle',mono),'@media(prefers-color-scheme:dark){text{fill:#72C9F1}}',line)
@@ -65,6 +68,12 @@ def symbol(index,x,y):
 languages=collections.Counter(r['language'] for r in projects if r.get('language'))
 stars=sum(r['stargazers_count'] for r in projects)
 for theme,c in themes.items():
+    for item in profile['focus']:
+        key={'Embedded Linux':'linux','MCU':'mcu','FreeRTOS':'freertos','Machine Vision':'vision'}[item['title']]
+        body='<rect x="1" y="1" width="418" height="138" rx="12" fill="'+c['bg']+'" stroke="'+c['border']+'"/>'
+        body+='<rect x="1" y="1" width="5" height="138" rx="2" fill="'+c['accent']+'"/>'
+        body+=txt(24,40,item['title'],22,c['accent'],'700')+txt(24,67,item['subtitle'],14,c['muted'])+txt(24,108,item['topics'],16,c['fg'])
+        svg('focus-'+key+'-'+theme+'.svg',420,140,body,title=item['subtitle']+' / '+item['topics'])
     tiles=''
     for i,label in enumerate(profile['tools']):
         x=30+(i%5)*155;y=12+(i//5)*110

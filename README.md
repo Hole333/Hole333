@@ -23,16 +23,12 @@
 
 <h2 align="center">🧩 方向</h2>
 
-<table width="100%">
-<tr>
-<td width="50%" valign="top"><h3>🐧 嵌入式 Linux</h3><p>驱动 · 设备树 · 硬件接口</p></td>
-<td width="50%" valign="top"><h3>🔧 MCU</h3><p>外设 · 通信 · 板级调试</p></td>
-</tr>
-<tr>
-<td width="50%" valign="top"><h3>⏱ FreeRTOS</h3><p>任务 · 队列 · 中断</p></td>
-<td width="50%" valign="top"><h3>👁 机器视觉</h3><p>OpenCV · ONNX · 结构光</p></td>
-</tr>
-</table>
+<p align="center">
+  <picture><source media="(prefers-color-scheme: dark)" srcset="assets/template/focus-linux-dark.svg"><img src="assets/template/focus-linux-light.svg" width="400" alt="嵌入式 Linux：驱动、设备树、硬件接口"></picture>
+  <picture><source media="(prefers-color-scheme: dark)" srcset="assets/template/focus-mcu-dark.svg"><img src="assets/template/focus-mcu-light.svg" width="400" alt="MCU：外设、通信、板级调试"></picture>
+  <picture><source media="(prefers-color-scheme: dark)" srcset="assets/template/focus-freertos-dark.svg"><img src="assets/template/focus-freertos-light.svg" width="400" alt="FreeRTOS：任务、队列、中断"></picture>
+  <picture><source media="(prefers-color-scheme: dark)" srcset="assets/template/focus-vision-dark.svg"><img src="assets/template/focus-vision-light.svg" width="400" alt="机器视觉：OpenCV、ONNX、结构光"></picture>
+</p>
 
 <h2 align="center">🛠 技术与工具</h2>
 <p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/template/tools-dark.svg"><img src="assets/template/tools-light.svg" alt="C、C++、Linux、MCU、FreeRTOS、OpenCV、Qt、CMake、Git、ESP32" width="760"></picture></p>
