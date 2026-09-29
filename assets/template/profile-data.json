@@ -1,0 +1,44 @@
+{
+  "asOf": "2026-09-29 UTC",
+  "login": "Hole333",
+  "publicRepositories": 9,
+  "originalProjectStars": 10,
+  "followers": 6,
+  "primaryLanguages": {
+    "C++": 4,
+    "Astro": 1,
+    "JavaScript": 1
+  },
+  "projects": [
+    {
+      "name": "HaloMoon-Notes",
+      "stars": 1,
+      "fork": false
+    },
+    {
+      "name": "Debug_E_Project",
+      "stars": 2,
+      "fork": false
+    },
+    {
+      "name": "Controller",
+      "stars": 1,
+      "fork": false
+    },
+    {
+      "name": "HK_Algorithm_Dev",
+      "stars": 2,
+      "fork": false
+    },
+    {
+      "name": "PostgraduateResearch",
+      "stars": 1,
+      "fork": false
+    },
+    {
+      "name": "HaloMoon",
+      "stars": 3,
+      "fork": false
+    }
+  ]
+}

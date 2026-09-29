@@ -1,0 +1,79 @@
+{
+  "login": "Hole333",
+  "name": "Halo Moon",
+  "bio": "嵌入式 Linux / MCU / FreeRTOS / 机器视觉",
+  "blog": "https://www.halomoon.cn/",
+  "notes": "https://github.com/Hole333/HaloMoon-Notes",
+  "focus": [
+    {
+      "title": "Embedded Linux",
+      "subtitle": "嵌入式 Linux",
+      "topics": "驱动 · 设备树 · 硬件接口"
+    },
+    {
+      "title": "MCU",
+      "subtitle": "单片机",
+      "topics": "外设 · 通信 · 板级调试"
+    },
+    {
+      "title": "FreeRTOS",
+      "subtitle": "实时操作系统",
+      "topics": "任务 · 队列 · 中断"
+    },
+    {
+      "title": "Machine Vision",
+      "subtitle": "机器视觉",
+      "topics": "OpenCV · ONNX · 结构光"
+    }
+  ],
+  "tools": [
+    "C",
+    "C++",
+    "Linux",
+    "MCU",
+    "FreeRTOS",
+    "OpenCV",
+    "Qt",
+    "CMake",
+    "Git",
+    "ESP32"
+  ],
+  "projects": [
+    {
+      "repo": "HaloMoon-Notes",
+      "label": "Linux 学习笔记",
+      "description": "驱动、设备树、结构光相关笔记",
+      "stack": "Markdown · Linux"
+    },
+    {
+      "repo": "Debug_E_Project",
+      "label": "ESP32 三子棋装置",
+      "description": "电赛 E 题工程与硬件资料",
+      "stack": "ESP32 · Arduino · C++"
+    },
+    {
+      "repo": "Controller",
+      "label": "串口控制界面",
+      "description": "Qt Quick 界面、串口与数据包处理",
+      "stack": "C++ · Qt Quick · SerialPort"
+    },
+    {
+      "repo": "HK_Algorithm_Dev",
+      "label": "视觉算法模块",
+      "description": "OpenCV 线检测、ONNX 分割推理",
+      "stack": "C++ · OpenCV · ONNX"
+    },
+    {
+      "repo": "PostgraduateResearch",
+      "label": "结构光三维重建",
+      "description": "图像生成、相位解码与重建仿真",
+      "stack": "C++17 · Qt · OpenCV"
+    },
+    {
+      "repo": "HaloMoon",
+      "label": "个人博客",
+      "description": "文章、笔记和项目记录",
+      "stack": "Astro · Markdown"
+    }
+  ]
+}
